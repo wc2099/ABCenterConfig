@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  ABCenterConfig
 //
-//  Created by Jack.cai on 07/25/2025.
+//  Created by Jack on 07/25/2025.
 //  Copyright (c) 2025 Jack.cai. All rights reserved.
 //
 
