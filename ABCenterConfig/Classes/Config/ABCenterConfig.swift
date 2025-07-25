@@ -10,23 +10,20 @@ import Foundation
 import FirebaseRemoteConfig
 
 @objc public enum RemoteConfigFetchAndActivateStatus: Int {
-    /// The remote fetch succeeded and fetched data was activated.
     case successFetchedFromRemote = 0
-    /// The fetch and activate succeeded from already fetched but yet unexpired config data.
-    /// You can control this using minimumFetchInterval property in RemoteConfigSettings.
     case successUsingPreFetchedData
-    /// The fetch and activate failed.
     case error
 }
 
-class PPConfigCenter {
+@objc public class ABCenterConfig: NSObject {
     
-    static let shared = PPConfigCenter()
+    @objc public static let shared = ABCenterConfig()
     
     private var remoteConfig: RemoteConfig
     
-    private init() {
+    private override init() {
         self.remoteConfig = RemoteConfig.remoteConfig()
+        super.init()
         let settings = RemoteConfigSettings()
         settings.minimumFetchInterval = 0
         self.remoteConfig.configSettings = settings
@@ -37,26 +34,14 @@ class PPConfigCenter {
         }
     }
     
-    static func setup() {
-        PPConfigCenter.shared.seupConfig()
+    /// 公开给外部调用的初始化配置方法
+    @objc public func setup() {
+        // 这里可以做额外的初始化操作，如果需要
     }
     
-    private func seupConfig() {
-        self.remoteConfig = RemoteConfig.remoteConfig()
-        let settings = RemoteConfigSettings()
-        settings.minimumFetchInterval = 0
-        self.remoteConfig.configSettings = settings
-        
-        if let defaultsPath = Bundle.main.path(forResource: "RemoteConfigDefaults", ofType: "plist"),
-           let defaults = NSDictionary(contentsOfFile: defaultsPath) as? [String: NSObject] {
-            self.remoteConfig.setDefaults(defaults)
-        }
-    }
-    
-    /// Fetch and activate remote config with completion handler using custom enum status
-    func fetchAndActivate(completionHandler: @escaping (RemoteConfigFetchAndActivateStatus, Error?) -> Void) {
+    /// 远程拉取并激活配置，带回调
+    @objc public func fetchAndActivate(completionHandler: @escaping (RemoteConfigFetchAndActivateStatus, Error?) -> Void) {
         remoteConfig.fetchAndActivate { status, error in
-            // Map Firebase's RemoteConfigFetchAndActivateStatus to our custom enum
             let mappedStatus: RemoteConfigFetchAndActivateStatus
             switch status {
             case .successFetchedFromRemote:
@@ -72,23 +57,28 @@ class PPConfigCenter {
         }
     }
     
-    func string(forKey key: String) -> String? {
+    /// 读取字符串值
+    @objc public func string(forKey key: String) -> String? {
         return remoteConfig.configValue(forKey: key).stringValue
     }
     
-    func number(forKey key: String) -> NSNumber? {
+    /// 读取数字值
+    @objc public func number(forKey key: String) -> NSNumber? {
         return remoteConfig.configValue(forKey: key).numberValue
     }
     
-    func data(forKey key: String) -> Data? {
+    /// 读取Data值
+    @objc public func data(forKey key: String) -> Data? {
         return remoteConfig.configValue(forKey: key).dataValue
     }
     
-    func bool(forKey key: String) -> Bool {
+    /// 读取布尔值
+    @objc public func bool(forKey key: String) -> Bool {
         return remoteConfig.configValue(forKey: key).boolValue
     }
     
-    func jsonValue(forKey key: String) -> Any? {
+    /// 读取JSON值
+    @objc public func jsonValue(forKey key: String) -> Any? {
         return remoteConfig.configValue(forKey: key).jsonValue
     }
 }
