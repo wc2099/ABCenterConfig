@@ -21,17 +21,14 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/Jack.cai/ABCenterConfig'
+  s.homepage         = 'https://codearts.af-south-1.huaweicloud.com/codehub/project/006f03b6050f4c22a993b2c1632a66a2/codehub/2493629/home?ref=master'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Jack.cai' => 'Jackcai@emobility.com.ng' }
-  s.source           = { :git => 'https://github.com/Jack.cai/ABCenterConfig.git', :tag => s.version.to_s }
+  s.source           = { :git => 'git@repo.codearts.af-south-1.huaweicloud.com:006f03b6050f4c22a993b2c1632a66a2/Mobile/emobility/iOS/ABCenterConfig.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '10.0'
-
-  s.source_files = 'ABCenterConfig/Classes/**/*'
-  
+  s.ios.deployment_target = '15.0'  
   # s.resource_bundles = {
   #   'ABCenterConfig' => ['ABCenterConfig/Assets/*.png']
   # }
@@ -39,4 +36,9 @@ TODO: Add long description of the pod here.
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
+  s.subspec 'Config' do |config|
+    config.source_files = 'ABCenterConfig/Classes/Config/**/*'
+  end
+  
+  s.dependency 'Firebase/RemoteConfig', '11.8.0'
 end
