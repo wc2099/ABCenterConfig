@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://codearts.af-south-1.huaweicloud.com/codehub/project/006f03b6050f4c22a993b2c1632a66a2/codehub/2493629/home?ref=master'
+  s.homepage         = 'https://github.com/wc2099/ABCenterConfig'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Jack.cai' => 'Jackcai@emobility.com.ng' }
-  s.source           = { :git => 'git@repo.codearts.af-south-1.huaweicloud.com:006f03b6050f4c22a993b2c1632a66a2/Mobile/emobility/iOS/ABCenterConfig.git', :tag => s.version.to_s }
+  s.author           = { 'Jack' => '1007271253@qq.com' }
+  s.source           = { :git => 'git@github.com:wc2099/ABCenterConfig.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '15.0'  
