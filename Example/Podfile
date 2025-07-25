@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'ABCenterConfig_Example' do
+  pod 'ABCenterConfig', :path => '../'
+
+  target 'ABCenterConfig_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
