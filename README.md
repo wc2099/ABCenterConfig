@@ -22,7 +22,7 @@ pod 'ABCenterConfig'
 
 ## Author
 
-Jack.cai, Jackcai@emobility.com.ng
+Jack, 1007271253@qq.com
 
 ## License
 
