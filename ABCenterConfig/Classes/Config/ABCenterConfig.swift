@@ -2,7 +2,7 @@
 //  ABCenterConfig.swift
 //  ABCenterConfig_Example
 //
-//  Created by jack.cai on 2025/7/25.
+//  Created by jack on 2025/7/25.
 //  Copyright © 2025 CocoaPods. All rights reserved.
 //
 
