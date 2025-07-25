@@ -43,7 +43,7 @@ import FirebaseRemoteConfig
     }
     
     /// 远程拉取并激活配置，带回调
-    @objc public func fetchAndActivate(completionHandler: @escaping (RemoteConfigFetchAndActivateStatus, Error?) -> Void) {
+    @objc public func fetchAndActivate(completionHandler: ((RemoteConfigFetchAndActivateStatus, Error?) -> Void)? = nil) {
         remoteConfig?.fetchAndActivate { status, error in
             let mappedStatus: RemoteConfigFetchAndActivateStatus
             switch status {
@@ -56,7 +56,7 @@ import FirebaseRemoteConfig
             @unknown default:
                 mappedStatus = .error
             }
-            completionHandler(mappedStatus, error)
+            completionHandler?(mappedStatus, error)
         }
     }
     
